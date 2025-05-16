@@ -1,0 +1,167 @@
+portfolio
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Asaju Muhammad-Fawaz | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <nav class="navbar container">
+      <h1 class="logo">Asaju Muhammad-Fawaz</h1>
+      <ul class="nav-links">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#interests">Interests</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero" class="container">
+    <div class="hero-text">
+      <h2>Hello! I'm Asaju Muhammad-Fawaz</h2>
+      <p>A passionate beginner web developer and tech enthusiast, learning to build creative, responsive websites and apps.</p>
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+    </div>
+    <div class="hero-image">
+      <img src="your-photo.jpg" alt="Asaju Muhammad-Fawaz" />
+    </div>
+  </section>
+
+  <section id="about" class="container section-padding">
+    <h2>About Me</h2>
+    <p>
+      I’m Asaju Muhammad-Fawaz, an aspiring web developer from Nigeria. I started coding recently with a strong drive to learn and grow in programming.
+      I specialize in frontend technologies like HTML, CSS, and I am currently learning JavaScript. I am building projects to enhance my skills and eventually become a freelance programmer.
+      I am passionate about creating user-friendly, beautiful websites and applications that solve real-world problems.
+    </p>
+  </section>
+
+  <section id="interests" class="container section-padding">
+    <h2>Interests</h2>
+    <ul>
+      <li>Web Development (Frontend and Backend)</li>
+      <li>Mobile App Development</li>
+      <li>Freelancing and Remote Work</li>
+      <li>Cybersecurity and Ethical Hacking</li>
+      <li>Learning new technologies and programming languages</li>
+    </ul>
+  </section>
+
+  <section id="skills" class="container section-padding">
+    <h2>Skills</h2>
+    <div class="skills-list">
+      <div class="skill">
+        <h3>HTML & CSS</h3>
+        <p>Building structured and styled web pages with responsive design.</p>
+      </div>
+      <div class="skill">
+        <h3>JavaScript (Learning)</h3>
+        <p>Adding interactivity and dynamic behavior to web pages.</p>
+      </div>
+      <div class="skill">
+        <h3>Version Control</h3>
+        <p>Using Git and GitHub to manage code and collaborate.</p>
+      </div>
+      <div class="skill">
+        <h3>Problem Solving</h3>
+        <p>Breaking down problems and learning programming logic step-by-step.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="container section-padding">
+    <h2>Projects</h2>
+    <div class="project-list">
+      <div class="project">
+        <h3>Personal Portfolio Website</h3>
+        <p>A website showcasing my profile, skills, and projects. Built with HTML and CSS.</p>
+        <a href="https://github.com/asaju001/my-portfolio" target="_blank" rel="noopener noreferrer" class="btn-secondary">View Code</a>
+      </div>
+      <!-- Add more projects here as you build them -->
+    </div>
+  </section>
+
+  <section id="contact" class="container section-padding">
+    <h2>Contact Me</h2>
+    <p>If you want to reach out for freelance work, collaboration, or just to say hi, feel free to connect!</p>
+    <a href="https://www.linkedin.com/in/asajumuhammad-fawaz" target="_blank" rel="noopener noreferrer" class="btn-primary">LinkedIn</a>
+    <a href="mailto:muhammadfawazasaju4@gmail.com" class="btn-secondary">Email Me</a>
+  </section>
+
+  <footer>
+    <p>© 2025 Asaju Muhammad-Fawaz. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+<script>
+  // Smooth scrolling for nav links
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').slice(1);
+      const targetSection = document.getElementById(targetId);
+      if(targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 60, // Adjust for fixed nav height if any
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Back to Top button
+  const backToTopBtn = document.createElement('button');
+  backToTopBtn.textContent = '↑ Top';
+  backToTopBtn.id = 'backToTopBtn';
+  backToTopBtn.style.position = 'fixed';
+  backToTopBtn.style.bottom = '30px';
+  backToTopBtn.style.right = '30px';
+  backToTopBtn.style.padding = '10px 15px';
+  backToTopBtn.style.fontSize = '16px';
+  backToTopBtn.style.border = 'none';
+  backToTopBtn.style.borderRadius = '5px';
+  backToTopBtn.style.backgroundColor = '#0077b6';
+  backToTopBtn.style.color = '#fff';
+  backToTopBtn.style.cursor = 'pointer';
+  backToTopBtn.style.display = 'none';
+  backToTopBtn.style.zIndex = '1000';
+  document.body.appendChild(backToTopBtn);
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 300) {
+      backToTopBtn.style.display = 'block';
+    } else {
+      backToTopBtn.style.display = 'none';
+    }
+  });
+
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll('section');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 70;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if(link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
